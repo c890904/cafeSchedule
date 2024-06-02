@@ -16,7 +16,7 @@ function App() {
     initDB();
   }, []);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (newValue: string) => {
     setValue(newValue);
   };
 
@@ -31,7 +31,7 @@ function App() {
       <TabContext value={value}>
         <AppBar position="static">
           <Toolbar>
-            <TabList onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="secondary tabs example">
+            <TabList onChange={(_, value) => handleChange(value)} textColor="secondary" indicatorColor="secondary" aria-label="secondary tabs example">
               <Tab label="Top" value="1" />
             </TabList>
           </Toolbar>

@@ -1,8 +1,7 @@
 import { Dexie } from "dexie";
 import { fetchCsv } from "./tool";
 import { db, masterModal } from "../db/dbTool";
-import { stringify } from "querystring";
-import { cast, getCastName, getCastNames } from "./cast";
+import { getCastNames } from "./cast";
 
 export type schedule = {
     castId: string;

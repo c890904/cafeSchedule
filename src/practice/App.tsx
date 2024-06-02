@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 export function ColorTabs() {
   const [value, setValue] = React.useState('one');
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (newValue: string) => {
     setValue(newValue);
   };
 
@@ -14,7 +14,7 @@ export function ColorTabs() {
     <Box sx={{ width: '100%' }}>
       <Tabs
         value={value}
-        onChange={handleChange}
+        onChange={(_, value) => handleChange(value)}
         textColor="secondary"
         indicatorColor="secondary"
         aria-label="secondary tabs example"
