@@ -1,6 +1,6 @@
 import { Dexie } from "dexie";
 import { fetchCsv } from "./tool";
-import { masterModal } from "../db/dbTool";
+import { db, masterModal } from "../db/dbTool";
 import { cast } from "./cast";
 
 export type shop = {
@@ -14,7 +14,7 @@ export const initShop = async (db: Dexie) => {
 
     const shopTable = db.table("shop");
 
-    const csvDatas = await fetchCsv("/shop.csv");
+    const csvDatas = await fetchCsv("/cafeSchedule/shop.csv");
     let newVersion = 0;
     csvDatas?.forEach((row) => {
         if (Number(row[0]) > shopVersion) {
@@ -35,4 +35,12 @@ export const initShop = async (db: Dexie) => {
             version: newVersion
         })
     }
+}
+
+export const getShopNames = async () => {
+    const map = new Map<string, string>();
+    (await db.table("shop").toArray()).forEach((shop: shop) => {
+        map.set(shop.id, shop.name)
+    });
+    return map;
 }

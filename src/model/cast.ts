@@ -13,7 +13,7 @@ export const initCast = async (db: Dexie) => {
 
     const castTable = db.table("cast");
 
-    const csvDatas = await fetchCsv("/cast.csv");
+    const csvDatas = await fetchCsv("/cafeSchedule/cast.csv");
     let newVersion = 0;
     csvDatas?.forEach((row) => {
         if (Number(row[0]) > shopVersion) {
@@ -26,7 +26,6 @@ export const initCast = async (db: Dexie) => {
             if (newVersion < Number(row[0])) {
                 newVersion = Number(row[0]);
             }
-        } else {
         }
     });
 
@@ -47,11 +46,9 @@ export const getCastNames = async () => {
 }
 
 export const getCastName = async (id: string) => {
-    console.log(id);
     try {
         const castTable = db.table("cast");
         const castResult = await castTable.get(id);
-        console.log(castResult);
         return (castResult) as cast
     } catch (error) {
         console.error(error)

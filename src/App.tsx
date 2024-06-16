@@ -27,7 +27,7 @@ function App() {
   */
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} maxWidth={"100dvw"}>
       <TabContext value={value}>
         <AppBar position="static">
           <Toolbar>

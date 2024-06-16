@@ -15,7 +15,6 @@ db.version(1).stores({
 });
 
 export async function initDB() {
-  console.log("initDB");
   initShop(db);
   initCast(db);
   initSchedule(db);
